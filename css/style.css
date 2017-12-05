@@ -1,0 +1,20 @@
+.api-image {
+    max-width: 100%;
+}
+
+.api-example {
+    background: #333;
+    padding: 10px;
+    display: inline-block;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+body {
+    background: #eee;
+}
+
+.container {
+    margin-top: 15px;
+}

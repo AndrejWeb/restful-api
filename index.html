@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>RESTful API</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><h3>RESTful API</h3></div>
+        <div class="panel-body">
+            <div class="alert alert-info">
+                <strong>NOTE:</strong> This project is no longer hosted on my website so use the URLs below only as a reference.<br /><br />
+                API endpoint URLs will be different for you depending where you upload the project.
+            </div>
+            <h4>GitHub: <a href="https://github.com/AndrejPHP/todos" target="_blank">https://github.com/AndrejPHP/restful-api</a></h4>
+            <hr />
+            <h2>API methods</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <tr class="success">
+                        <th>Method</th>
+                        <th>URI</th>
+                        <th>Full URL</th>
+                    </tr>
+                    <tr>
+                        <td><a href="#get-todos">GET</a></td>
+                        <td><span class="api-url-color">/api/todos</span></td>
+                        <td>https://www.andrejphp.com/portfolio<strong>/api/todos</strong></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#get-todo">GET</a></td>
+                        <td><span class="api-url-color">/api/todos/{id}</span></td>
+                        <td>https://www.andrejphp.com/portfolio<strong>/api/todos/{id}</strong></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#post-todos">POST</a></td>
+                        <td>/api/todos</td>
+                        <td>https://www.andrejphp.com/portfolio<strong>/api/todos</strong></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#put-todos">PUT</a></td>
+                        <td>/api/todos/{id}</td>
+                        <td>https://www.andrejphp.com/portfolio<strong>/api/todos/{id}</strong></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#delete-todos">DELETE</a></td>
+                        <td>/api/todos/{id}</td>
+                        <td>https://www.andrejphp.com/portfolio<strong>/api/todos/{id}</strong></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#get-user">GET</a></td>
+                        <td>/api/todos/user/{userId}</td>
+                        <td>https://www.andrejphp.com/portfolio<strong>/api/todos/user/{userId}</strong></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#delete-user">DELETE</a></td>
+                        <td>/api/todos/user/{userId}</td>
+                        <td>https://www.andrejphp.com/portfolio<strong>/api/todos/user/{userId}</strong></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#get-completed">GET</a></td>
+                        <td>/api/todos/completed</td>
+                        <td>https://www.andrejphp.com/portfolio<strong>/api/todos/completed</strong></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#get-uncompleted">GET</a></td>
+                        <td>/api/todos/uncompleted</td>
+                        <td>https://www.andrejphp.com/portfolio<strong>/api/todos/uncompleted</strong></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#delete-todo-id">DELETE</a></td>
+                        <td>/api/todos/delete/{id}</td>
+                        <td>https://www.andrejphp.com/portfolio<strong>/api/todos/delete/{id}</strong></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#delete-all-todos">DELETE</a></td>
+                        <td>/api/todos/delete/all</td>
+                        <td>https://www.andrejphp.com/portfolio<strong>/api/todos/delete/all</strong></td>
+                    </tr>
+                </table>
+            </div>
+            <hr />
+            <h2>Examples</h2>
+            <div class="row" id="get-todos">
+                <div class="col-xs-12">
+                    <p><span class="api-example">GET /api/todos</span><br />
+                        <strong>Retrieve API data</strong></p>
+                    <p>To view the data nicely formatted choose Pretty and JSON as shown in the image</p>
+                    <img src="images/get_todos.png" class="api-image" alt="API Request Example" />
+                </div>
+            </div>
+            <br />
+            <div class="row" id="get-todo">
+                <div class="col-xs-12">
+                    <p><span class="api-example">GET /api/todos/{id}</span><br />
+                        <strong>Retrieve single record instead of all data where {id} is the id of the todo</strong></p>
+                    <p>For example a GET request to /api/todos/15 would result in todo with ID 15 being returned. If todo with given ID does not exist, empty JSON string is returned.</p>
+                    <img src="images/get_todo.png" class="api-image" alt="API Request Example" />
+                </div>
+            </div>
+            <br />
+            <div class="row" id="post-todos">
+                <div class="col-xs-12">
+                    <p>  <span class="api-example">POST /api/todos</span><br />
+                        <strong>Create todo record by sending valid JSON data as a request</strong>
+                    </p>
+                    <p><strong>Required fields: </strong>id, userId, title<br />
+                        completed is optional and if not set the default inserted value is <em>false</em>
+                        <br /><br />
+                        <strong>id</strong> - must be unique, not empty and integer<br />
+                        <strong>userId</strong> - must not be empty and must be an integer<br />
+                        <strong>title</strong> - must not be empty and minimum length required is 5 characters<br />
+                        <strong>completed</strong> - must be a boolean (true or false)
+                    </p>
+                    <p>
+                        Here is an example where the request fails i.e. does not result in a new record created.<br/>
+                        <img src="images/post_todos_1.png" class="api-image" alt="API Request Example" />
+                        <br /><br />
+                        If you are wondering what's set in Headers here it is:<br />
+                        <img src="images/post_todos_headers.png" class="api-image" alt="API Request Example" />
+                    </p>
+                    <hr/>
+                    <p>
+                        Example where the sent data is valid but there is already record with the given id so it returns error.<br />
+                        <img src="images/post_todos_2.png" class="api-image" alt="API Request Example" />
+                    </p>
+                    <hr/>
+                    <p>
+                        Successful request. Full data is returned with the newly created record shown first.<br />
+                        <img src="images/post_todos_3.png" class="api-image" alt="API Request Example" />
+                    </p>
+                    <hr/>
+                    <p>
+                        You can also create multiple records as shown in this example<br />
+                        <img src="images/post_todos_4.png" class="api-image" alt="API Request Example" />
+                    </p>
+                </div>
+            </div>
+            <br />
+            <div class="row" id="put-todos">
+                <div class="col-xs-12">
+                    <p>
+                        <span class="api-example">PUT /api/todos/{id}</span><br />
+                        <strong>Update existing record where {id} is the id of the record</strong>
+                    </p>
+                    <p>
+                        The same rules apply to the data as described in <a href="#post-todos">POST /api/todos</a> with a difference that you can't update id and userId. Only title and completed can be updated. If you set id and userId values they will be ignored.
+                    </p>
+                    <p>
+                        Example:
+                        <br />
+                        <img src="images/put_todos_before.png" class="api-image" alt="API Request Example" />
+                        <br />
+                        <img src="images/put_todos_after.png" class="api-image" alt="API Request Example" />
+                    </p>
+                </div>
+            </div>
+            <br />
+            <div class="row" id="delete-todos">
+                <div class="col-xs-12">
+                    <p>
+                        <span class="api-example">DELETE /api/todos/{id}</span><br />
+                        <strong>Delete existing record where {id} is the id of the record</strong>
+                    </p>
+                    <p>
+                        Deletes the record with id of {id} and returns the remaining of the data. If the id is not found error message is returned.<br />
+                        <img src="images/delete_todos_error.png" class="api-image" alt="API Request Example" />
+                    <hr/>
+                    Successful deletion of todo with id 7.<br />
+                    <img src="images/delete_todos_success.png" class="api-image" alt="API Request Example" />
+                    </p>
+                </div>
+            </div>
+            <br />
+            <div class="row" id="get-user">
+                <div class="col-xs-12">
+                    <p>
+                        <span class="api-example">GET /api/todos/user/{userId}</span><br />
+                        <strong>Retrieve records (todos) for user where {userId} is the id of the user</strong>
+                    </p>
+                    <p>
+                        If user does not exist i.e. there are 0 records for the given userId, empty data is returned instead of error message saying that the user does not exist.<br />
+                        <img src="images/get_user_empty.png" class="api-image" alt="API Request Example" />
+                    </p>
+                    <hr/>
+                    <p>
+                        Response with todos for existing user.<br />
+                        <img src="images/get_user_data.png" class="api-image" alt="API Request Example" />
+                    </p>
+                </div>
+            </div>
+            <br />
+            <div class="row" id="delete-user">
+                <div class="col-xs-12">
+                    <p>
+                        <span class="api-example">DELETE /api/todos/user/{userId}</span><br />
+                        <strong>Delete todos created by user with {userId} and return the rest of the data.</strong>
+                    </p>
+                    <p>
+                        If no user with {userId} is found error message is displayed otherwise todos created by this user are deleted and remaining data returned as response to show that the request was successfully performed.<br />
+                        <img src="images/delete_user_todos.png" class="api-image" alt="API Request Example" />
+                    </p>
+                </div>
+            </div>
+            <br />
+            <div class="row" id="get-completed">
+                <div class="col-xs-12">
+                    <p>
+                        <span class="api-example">GET /api/todos/completed</span><br />
+                        <strong>Retrieve completed todos i.e. completed = true</strong>
+                    </p>
+                    <p>
+                        <img src="images/get_completed_todos.png" class="api-image" alt="API Request Example" />
+                    </p>
+                </div>
+            </div>
+            <br />
+            <div class="row" id="get-uncompleted">
+                <div class="col-xs-12">
+                    <p>
+                        <span class="api-example">GET /api/todos/uncompleted</span><br />
+                        <strong>Retrieve uncompleted todos i.e. completed = false</strong>
+                    </p>
+                    <p>
+                        <img src="images/get_uncompleted_todos.png" class="api-image" alt="API Request Example" />
+                    </p>
+                </div>
+            </div>
+
+            <div class="row" id="delete-todo-id">
+                <div class="col-xs-12">
+                    <p>
+                        <span class="api-example">DELETE /api/todos/delete/{id}</span><br />
+                        <strong>Delete record (todo) with id of {id} - this works in exactly the same way as <a href="#delete-todos">DELETE /api/todos/{id}</a> except that it has /delete/ in the URL request</strong>
+                    </p>
+                    <p>
+                        <img src="images/delete_todo_id.png" class="api-image" alt="API Request Example" />
+                    </p>
+                </div>
+            </div>
+
+            <div class="row" id="delete-all-todos">
+                <div class="col-xs-12">
+                    <p>
+                        <span class="api-example">DELETE /api/todos/delete/all</span><br />
+                        <strong>Deletes all records (todos) and returns empty data set</strong>
+                    </p>
+                    <p>
+                        <img src="images/delete_all_todos.png" class="api-image" alt="API Request Example" />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
