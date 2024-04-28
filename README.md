@@ -31,7 +31,3 @@ Below is a list of allowed methods and API endpoints.
 | DELETE        | user/{id}     |
 | DELETE        | /delete/{id}  |
 | DELETE        | /delete/all   |
-
-Full explanation can be found in file index.html which is also hosted here: http://andrejphp.dx.am/restful-api/
-
-Created by: https://andrejphp.is/ 
